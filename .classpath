@@ -17,7 +17,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -27,12 +27,12 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/koushicks/.m2/repository/com/relevantcodes/extentreports/2.41.1/extentreports-2.41.1.jar">
+	<classpathentry kind="lib" path="C:/Users/koushicks/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.relevantcodes"/>
-			<attribute name="maven.artifactId" value="extentreports"/>
-			<attribute name="maven.version" value="2.41.1"/>
+			<attribute name="maven.groupId" value="commons-io"/>
+			<attribute name="maven.artifactId" value="commons-io"/>
+			<attribute name="maven.version" value="2.4"/>
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>

@@ -10,10 +10,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
+import org.cucumber.Browserconfig.BrowserInilization;
 import org.cucumber.Browserconfig.Browserconfig;
+import org.cucumber.Utilites.Commonmethods;
+import org.cucumber.objects.Flipkart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.SendKeysAction;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -22,64 +26,48 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class Stepdef extends Browserconfig {
+public class Stepdef extends BrowserInilization {
 	WebDriver driver;
-	Properties prop;
-
-	@Before
-	public void startReport() throws IOException {	
-		prop = new Properties();
-		BufferedReader reader = new BufferedReader(
-				new FileReader("C:\\Users\\koushicks\\eclipse-workspace\\HybridFramework\\role.properties"));
-		prop.load(reader);
-		System.out.println(prop);
-		driver = choosebrowser("Chrome", "https://github.com/login");
-	}
+	BrowserInilization init = new BrowserInilization();
+	
 
 	@Given("^The user is able to login with valid \"([^\"]*)\" and with valid \"([^\"]*)\"$")
-	public void the_user_is_able_to_login_with_valid_and_with_valid(String arg1, String arg2) throws Throwable {
+	public void the_user_is_able_to_login_with_valid_and_with_valid(String arg1, String arg2) throws Throwable 
+	{
+		init.startReport();
 		
-	//Please delete this below code and paste your code.	
-		String us = prop.getProperty(arg1);
-		String pwd = prop.getProperty(arg2);
-		Thread.sleep(2000);
-		WebElement usernamefield = driver.findElement(By.name("login"));
-		if(usernamefield.isDisplayed())
-		{	
-		usernamefield.sendKeys(us);
-		}
-		else
-		{
-			System.out.println("No field found");
-		}	
-		WebElement passwordfield = driver.findElement(By.name("password"));
-		passwordfield.sendKeys(pwd);
-		WebElement loginbutton = driver.findElement(By.name("commit"));
-		loginbutton.click();
-
+		WebElement username = driver.findElement(Flipkart.USERNAME);
+		WebElement password = driver.findElement(Flipkart.PASSWORD);
+		
+		String us = init.prop.getProperty("arg1");
+		String pwd = init.prop.getProperty("arg2");
+		
+		Commonmethods.sendKeys(username,us);
+		Commonmethods.sendKeys(password,pwd);
+		
 	}
 
 	@Given("^i verify the title and url of the page$")
-	public void i_verify_the_title_and_url_of_the_page() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+	public void i_verify_the_title_and_url_of_the_page() throws Throwable 
+	{
 
 	}
 
 	@Given("^Click on the search icon and Search for a product$")
-	public void click_on_the_search_icon_and_Search_for_a_product() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+	public void click_on_the_search_icon_and_Search_for_a_product() throws Throwable 
+	{
 
 	}
 
 	@Then("^filter the searched product in the application$")
-	public void filter_the_searched_product_in_the_application() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+	public void filter_the_searched_product_in_the_application() throws Throwable 
+	{
 
 	}
 
 	@Then("^add it to favorites section$")
-	public void add_it_to_favorites_section() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+	public void add_it_to_favorites_section() throws Throwable 
+	{
 
 	}
 
@@ -94,26 +82,23 @@ public class Stepdef extends Browserconfig {
 		// Write code here that turns the phrase above into concrete actions
 
 	}
-	
-	@When("^User enters username and password$")
-	public void user_enters_username_and_password() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   
-	}
 
 	@And("^click on login button$")
 	public void click_on_login_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+		
+		WebElement Loginbutton = driver.findElement(Flipkart.LOGINBUTTON);
+		Commonmethods.click(Loginbutton);
 	    
 	}
 
 	@Then("^validate error message is displayed$")
 	public void validate_error_message_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	   
+
+		String Mess = driver.findElement(Flipkart.ERRORMESSAGE).getText();
+		System.out.println("The error Message is " + Mess);
 	}
 	
-	@When("^user search for a product$")
+	@When("^the user search for a product$")
 	public void user_search_for_a_product() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    
@@ -142,7 +127,7 @@ public class Stepdef extends Browserconfig {
 	    // Write code here that turns the phrase above into concrete actions
 	    
 	}
-	@When("^click on sign in option$")
+	@When("^user is able to click on sign in option$")
 	public void click_on_sign_in_option() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    
@@ -150,12 +135,6 @@ public class Stepdef extends Browserconfig {
 
 	@Then("^Verify the user info page is displayed$")
 	public void verify_the_user_info_page_is_displayed() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
-	}
-
-	@When("^Addres of the user is missing$")
-	public void addres_of_the_user_is_missing() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    
 	}
